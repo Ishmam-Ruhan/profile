@@ -64,6 +64,7 @@
       if( response.ok ) {
         return response.text()
       } else {
+        thisForm.querySelector('.loading').classList.remove('d-block');
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset();
       }
@@ -74,11 +75,13 @@
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       } else {
+        thisForm.querySelector('.loading').classList.remove('d-block');
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       }
     })
     .catch((error) => {
+      thisForm.querySelector('.loading').classList.remove('d-block');
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
     });
