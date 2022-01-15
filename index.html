@@ -27,6 +27,31 @@
  
   <link href="assets/css/style.css" rel="stylesheet">
 
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+        emailjs.init("user_XbO1BrTtVcvkEJOS0AlmM");
+    })();
+</script>
+
+<script type="text/javascript">
+  window.onload = function() {
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          // generate a five digit number for the contact_number variable
+          this.contact_number.value = Math.random() * 100000 | 0;
+          // these IDs from the previous steps
+          emailjs.sendForm('contact_service', 'contact_form', this)
+              .then(function() {
+                  console.log('SUCCESS!');
+              }, function(error) {
+                  console.log('FAILED...', error);
+              });
+      });
+  }
+</script>
+
 </head>
 
 <body>
@@ -628,7 +653,8 @@
 
             <!--https://formsubmit.co/9bfaed8588591bda9d841e5539277cd5-->
 
-            <form action="https://formsubmit.co/9bfaed8588591bda9d841e5539277cd5" method="post" role="form" class="php-email-form">
+            <!--<form action="https://formsubmit.co/9bfaed8588591bda9d841e5539277cd5" method="post" role="form" class="php-email-form">-->
+            <form id="contact-form" role="form" class="php-email-form">
               <!--Honeypot-->
               <input type="text" name="_honey" style="display: none;">
 
@@ -657,7 +683,7 @@
                 <div class="sent-message">Message sent! <br> Thanks! &nbsp;I will get back to you very soon.</div>
               </div>
 
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit" value="Send">Send Message</button></div>
             </form>
 
           </div>
