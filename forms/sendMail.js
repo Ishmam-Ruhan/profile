@@ -8,6 +8,6 @@ function send(params){
 
     emailjs.send('service_4zxcvhs','template_7zni9ur',tempParam)
     .then(function(res){
-        console.log(res.status);
+        //console.log(res.status);
     });
 }
